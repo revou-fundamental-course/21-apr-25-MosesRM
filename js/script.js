@@ -1,14 +1,15 @@
-// This variable tells us if we convert C to F (true) or F to C (false)
+// Normal state (C to F)
 var isCtoF = true;
 
 // Convert button action
-document.getElementById('convertBtn').onclick = function () {
+document.getElementById('convertBtn').addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent page refresh
     var input = document.getElementById('inputTemp').value;
 
     // Check if input is empty
     if (input === '') {
-        alert('Please enter a temperature value.');
-        return; // stop if empty
+        alert('Please enter the value.');  
+        return;
     }
 
     // Convert from string to number
@@ -31,7 +32,7 @@ document.getElementById('convertBtn').onclick = function () {
 
     // Show the calculation formula below
     document.getElementById('calculation').innerText = calcText;
-};
+});
 
 // Reset button action clears all inputs and outputs
 document.getElementById('resetBtn').onclick = function () {
@@ -40,9 +41,10 @@ document.getElementById('resetBtn').onclick = function () {
     document.getElementById('calculation').innerText = '';
 };
 
-// Reverse button action changes conversion direction, clears inputs and updates text
-document.getElementById('reverseBtn').onclick = function () {
-    // Switch the conversion mode
+// Reverse button action 
+document.getElementById('reverseBtn').addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent page refresh
+    // Switch the conversion state
     isCtoF = !isCtoF;
 
     // Clear inputs and outputs
@@ -54,15 +56,24 @@ document.getElementById('reverseBtn').onclick = function () {
     if (isCtoF) {
         document.getElementById('instruction').innerText =
             'Masukkan suhu derajat celcius (C) ke kota di bawah, lalu klik tombol konversi untuk mendapatkan hasil konversi dalam bentuk farenheit (F)';
-    document.getElementById('link').innerText = 'Celcius to farenheit';
+        document.getElementById('link').innerText = 'Celcius to farenheit';
+        document.getElementById('label-input').innerHTML = 'Celcius (&deg;C)';
+        document.getElementById('label-output').innerHTML = 'Farenheit (&deg;F)';
+        document.getElementById('formula-Intro').innerHTML = 'Suhu S dalam derajat Fahrenheit (&deg;F) sama dengan suhu S dalam derajat Celcius (&deg;C) kali 9/5 tambah 32';
+        document.getElementById('formula').innerHTML = 'S<sub>(&deg;F)</sub> = (S<sub>(&deg;C)</sub> x 9/5) + 32';
+        document.getElementById('formula-alternatif').innerHTML = 'S<sub>(&deg;F)</sub> = (S<sub>(&deg;C)</sub> x 1,8) + 32';
     } else {
-    document.getElementById('instruction').innerText =
-        'Masukkan suhu derajat farenheit (F) ke kota di bawah, lalu klik tombol konversi untuk mendapatkan hasil konversi dalam bentuk celcius (C)';
-    document.getElementById('link').innerText = 'Farenheit to celcius';
+        document.getElementById('instruction').innerText =
+            'Masukkan suhu derajat farenheit (F) ke kota di bawah, lalu klik tombol konversi untuk mendapatkan hasil konversi dalam bentuk celcius (C)';
+        document.getElementById('label-input').innerHTML = 'Fahrenheit (&deg;F)';
+        document.getElementById('label-output').innerHTML = 'Celsius (&deg;C)';
+        document.getElementById('formula-Intro').innerHTML = 'Suhu S dalam derajat Celcius (&deg;C) sama dengan suhu S dalam derajat Farenheit (&deg;F) dikurangi 32 dulu lalu dikali 9/5';
+        document.getElementById('formula').innerHTML = 'S<sub>(&deg;C)</sub> = (S<sub>(&deg;F)</sub> - 32) x 9/5';
+        document.getElementById('formula-alternatif').innerHTML = 'S<sub>(&deg;C)</sub> = (S<sub>(&deg;F)</sub> - 32) x 1.8';
     }
-};
+});
 
-// Link text acts the same as reverse button
+// Link text 
 document.getElementById('link').onclick = function () {
     document.getElementById('reverseBtn').click();
 };

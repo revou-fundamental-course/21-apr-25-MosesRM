@@ -3,31 +3,72 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Temperature Converter</title>
+    <title>Temperature Converter - Moses Rafael</title>
     <link rel="stylesheet" href="/css/style.css" />
 </head>
+
 <body>
+    <main>
+        <!-- Intro -->
+        <section>
+            <h3 id="instruction">
+                Masukkan suhu derajat celcius (&deg;C) ke kotak di bawah, lalu klik tombol konversi
+                untuk mendapatkan hasil konversi dalam bentuk farenheit (&deg;F)
+            </h3>
+        </section>
+    
+        <!-- Input for user temperature -->
+        <section>
+            <div class="Input">
+                <label for="" id="label-input">Celcius (&deg;C)</label> <br>
+                <textarea name="" id="inputTemp" placeholder="Enter temperature" rows="5" cols="40"></textarea>
+            </div>
 
-    <p id="instruction">
-        Masukkan suhu derajat celcius (C) ke kota di bawah, lalu klik tombol konversi
-        untuk mendapatkan hasil konversi dalam bentuk farenheit (F)
-    </p>
+            <div class="button-group1">
+                <div class="button-group2">
+                    <button id="convertBtn">Convert</button>
+                    <button id="resetBtn">Reset</button>
+                    <button id="reverseBtn">Reverse</button>
+                </div>
+            </div>
 
-    <!-- Input for user temperature -->
-    <input type="number" id="inputTemp" placeholder="Enter temperature" />
+            <div class="Output">
+                <label for="" id="label-output">Farenheit (&deg;F)</label> <br>
+                <textarea name="" id="outputTemp" readonly placeholder="Output will appear here" rows="5" cols="40"></textarea>
+            </div>
+            
+            <div class="calculation">
+                <textarea name="" id="calculation" readonly placeholder="Calculation box" rows="5" cols="40" ></textarea>
+            </div>
+            
+            <div class="link" id="link">Celcius to farenheit</div>
+        </section>
 
-    <div class="button-group">
-        <button id="convertBtn">Convert</button>
-        <button id="resetBtn">Reset</button>
-        <button id="reverseBtn">Reverse</button>
-    </div>
-
-    <!-- Output shown in input-style box, but readonly -->
-    <input type="text" id="outputTemp" readonly placeholder="Output will appear here" />
-
-    <div class="calculation" id="calculation"></div>
-
-    <div class="link" id="link">Celcius to farenheit</div>
+        <section>
+            <header>
+                <h3>Cara Konversi Dari Celcius (&deg;C) ke Fahrenheit (&deg;F)</h3>
+            </header>
+        
+            <hr />
+        
+            <!-- Konten Informasi -->
+            <article>
+                <p id="formula-Intro">Suhu S dalam derajat Fahrenheit (&deg;F) sama dengan suhu S dalam derajat Celcius (&deg;C) kali 9/5 tambah 32</p>
+        
+                <!-- Formula -->
+                <div class="formula" id="formula">
+                    S<sub>(&deg;F)</sub> = (S<sub>(&deg;C)</sub> x 9/5) + 32
+                </div>
+                <div>
+                    atau
+                </div>
+        
+                <div class="formula" id="formula-alternatif">
+                    S<sub>(&deg;F)</sub> = (S<sub>(&deg;C)</sub> x 1,8) + 32
+                </div>
+            </article>
+        </section>
+    </main>
 
     <script src="/js/script.js"></script>
 
