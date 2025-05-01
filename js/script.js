@@ -17,24 +17,28 @@ document.getElementById('convertBtn').addEventListener("click", function(event) 
     var output;
     var calcText;
 
-    if (isCtoF) {
-        // Celsius to Fahrenheit: (input * 9/5) + 32
-        output = (tempInput * 9 / 5) + 32;
-        calcText = tempInput + ' * (9/5) + 32 = ' + output.toFixed(2);
+    if (isNaN(tempInput)) {
+        alert("Please input a number");
     } else {
-        // Fahrenheit to Celsius: (input - 32) * 5/9
-        output = (tempInput - 32) * 5 / 9;
-        calcText = '(' + tempInput + ' - 32) * (5/9) = ' + output.toFixed(2);
+        if (isCtoF) {
+            // Celsius to Fahrenheit: (input * 9/5) + 32
+            output = (tempInput * 9 / 5) + 32;
+            calcText = tempInput + ' * (9/5) + 32 = ' + output.toFixed(2);
+        } else {
+            // Fahrenheit to Celsius: (input - 32) * 5/9
+            output = (tempInput - 32) * 5 / 9;
+            calcText = '(' + tempInput + ' - 32) * (5/9) = ' + output.toFixed(2);
+        }
     }
 
     // Show result in output input box (readonly)
     document.getElementById('outputTemp').value = output.toFixed(2);
 
-    // Show the calculation formula below
+    // Show the calculation formula
     document.getElementById('calculation').innerText = calcText;
 });
 
-// Reset button action clears all inputs and outputs
+// Reset button action clears all 
 document.getElementById('resetBtn').onclick = function () {
     document.getElementById('inputTemp').value = '';
     document.getElementById('outputTemp').value = '';
@@ -44,8 +48,7 @@ document.getElementById('resetBtn').onclick = function () {
 // Reverse button action 
 document.getElementById('reverseBtn').addEventListener("click", function(event) {
     event.preventDefault(); // Prevent page refresh
-    // Switch the conversion state
-    isCtoF = !isCtoF;
+    isCtoF = !isCtoF; // Switch the conversion state
 
     // Clear inputs and outputs
     document.getElementById('inputTemp').value = '';
@@ -54,17 +57,18 @@ document.getElementById('reverseBtn').addEventListener("click", function(event) 
 
     // Update instruction text and link text
     if (isCtoF) {
-        document.getElementById('instruction').innerText =
-            'Masukkan suhu derajat celcius (C) ke kota di bawah, lalu klik tombol konversi untuk mendapatkan hasil konversi dalam bentuk farenheit (F)';
-        document.getElementById('link').innerText = 'Celcius to farenheit';
+        document.getElementById('instruction').innerHTML =
+            'Masukkan suhu derajat celcius (&deg;C) ke kota di bawah, lalu klik tombol konversi untuk mendapatkan hasil konversi dalam bentuk farenheit (&deg;F)';
+        document.getElementById('link').innerText = 'Farenheit to Celcius';
         document.getElementById('label-input').innerHTML = 'Celcius (&deg;C)';
         document.getElementById('label-output').innerHTML = 'Farenheit (&deg;F)';
         document.getElementById('formula-Intro').innerHTML = 'Suhu S dalam derajat Fahrenheit (&deg;F) sama dengan suhu S dalam derajat Celcius (&deg;C) kali 9/5 tambah 32';
         document.getElementById('formula').innerHTML = 'S<sub>(&deg;F)</sub> = (S<sub>(&deg;C)</sub> x 9/5) + 32';
         document.getElementById('formula-alternatif').innerHTML = 'S<sub>(&deg;F)</sub> = (S<sub>(&deg;C)</sub> x 1,8) + 32';
     } else {
-        document.getElementById('instruction').innerText =
-            'Masukkan suhu derajat farenheit (F) ke kota di bawah, lalu klik tombol konversi untuk mendapatkan hasil konversi dalam bentuk celcius (C)';
+        document.getElementById('instruction').innerHTML =
+            'Masukkan suhu derajat farenheit (&deg;F) ke kota di bawah, lalu klik tombol konversi untuk mendapatkan hasil konversi dalam bentuk celcius (&deg;C)';
+        document.getElementById('link').innerText = 'Celcius to Farenheit';
         document.getElementById('label-input').innerHTML = 'Fahrenheit (&deg;F)';
         document.getElementById('label-output').innerHTML = 'Celsius (&deg;C)';
         document.getElementById('formula-Intro').innerHTML = 'Suhu S dalam derajat Celcius (&deg;C) sama dengan suhu S dalam derajat Farenheit (&deg;F) dikurangi 32 dulu lalu dikali 9/5';

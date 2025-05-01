@@ -1,3 +1,10 @@
+/* Sets for all */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Setting for body */
 body {
     font-family: Arial, sans-serif;
     max-width: 400px;
@@ -6,28 +13,30 @@ body {
     background-color: #f9f9f9;
     box-sizing: border-box;
     border: black 1px solid;
+    border-radius: 12px;
 }
 
-input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 10px;
-    font-size: 16px;
-    box-sizing: border-box;
+/* Setting for input box and others */
+.Input{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0px 10px 0px;
 }
 
-.button-group {
-    margin-top: 10px;
+/* Setting for the button div box */
+.button-group1 {
+    margin: 5px 0px 10px 0px;
 }
 
+/* Setting for all button */
 button {
     padding: 10px;
-    margin: 10px 5px 0 0;
     font-size: 16px;
     cursor: pointer;
-    border: 1px solid #999;
+    border: 1px solid #999; 
     background-color: #eee;
-    border-radius: 3px;
+    border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
@@ -35,18 +44,27 @@ button:hover {
     background-color: #ddd;
 }
 
-#outputTemp {
-    margin-top: 10px;
+/* Setting for Output box and others */
+.Output{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0px 10px 0px;
 }
 
+/* Setting for calculation box and others */
 .calculation {
-    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0px 10px 0px;
     font-style: italic;
     font-size: 14px;
 }
 
+/* Setting for the link */
 .link {
-    margin-top: 15px;
+    margin: 15px 0px 15px 0px;
     color: blue;
     text-decoration: underline;
     cursor: pointer;
@@ -54,8 +72,21 @@ button:hover {
     display: inline-block;
 }
 
-/* Setting responsive */
+/* Setting for bagian formula and others */
+.bagian-formula{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
+/* Setting for the article div box */
+article{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Setting responsive */
 @media (max-width: 480px) {
     body {
         margin: 10px;
@@ -63,27 +94,23 @@ button:hover {
         max-width: 100%;
     }
 
+    section{
+        font-size: 12px;
+    }
+
     button {
-        font-size: 14px;
+        font-size: 12px;
         padding: 8px;
     }
     
-    .button-group {
+    .button-group2 {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
     }
     
-    .button-group button {
+    .button-group2 button {
         flex: 1 1 calc(33% - 8px);
         margin: 0;
-    }
-    
-    input {
-        font-size: 14px;
-    }
-    
-    .calculation, .link {
-        font-size: 12px;
     }
 }
